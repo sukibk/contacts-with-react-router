@@ -1,14 +1,17 @@
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData, redirect } from 'react-router-dom';
+import {getContact, updateContact} from "../contacts.js";
 
 export default function Contact() {
-    const contact = {
-        first: 'Your',
-        last: 'Name',
-        avatar: 'https://placekitten.com/g/200/200',
-        twitter: 'your_handle',
-        notes: 'Some notes',
-        favorite: true,
-    }
+    const {contact} = useLoaderData();
+
+    // const contact = {
+    //     first: 'Your',
+    //     last: 'Name',
+    //     avatar: 'https://placekitten.com/g/200/200',
+    //     twitter: 'your_handle',
+    //     notes: 'Some notes',
+    //     favorite: true,
+    // }
 
     return (
         <div id="contact">
@@ -87,5 +90,10 @@ function Favorite({ contact }) {
             </button>
         </Form>
     );
+}
+
+export async function loader({params}){
+    const contact = await getContact(params.contactId);
+    return {contact}
 }
 
