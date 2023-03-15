@@ -6,8 +6,7 @@ export default function EditContact() {
     const navigate = useNavigate();
     const params = useParams();
 
-    const backHandler = (e) => {
-        e.preventDefault();
+    const backHandler = () => {
         navigate(-1);
     }
 

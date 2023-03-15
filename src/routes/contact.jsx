@@ -1,17 +1,9 @@
-import { Form, useLoaderData, redirect } from 'react-router-dom';
+import { Form, useLoaderData, redirect, useFetcher } from 'react-router-dom';
 import {getContact, updateContact} from "../contacts.js";
 
 export default function Contact() {
     const {contact} = useLoaderData();
-
-    // const contact = {
-    //     first: 'Your',
-    //     last: 'Name',
-    //     avatar: 'https://placekitten.com/g/200/200',
-    //     twitter: 'your_handle',
-    //     notes: 'Some notes',
-    //     favorite: true,
-    // }
+    const fetcher = useFetcher();
 
     return (
         <div id="contact">
